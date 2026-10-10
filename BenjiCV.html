@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benjamín Zajko CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #FBF3ED;
+        --card: #FFFFFF;
+        --peach: #FF8656;
+        --peach-deep: #E5652E;
+        --peach-soft: #FFE2CF;
+        --peach-soft2: #FFF0E5;
+        --ink: #2C2118;
+        --muted: #8A7666;
+        --border: #F0DECE;
+        --mono: 'IBM Plex Mono', monospace;
+        --display: 'Fraunces', serif;
+        --body: 'IBM Plex Sans', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: var(--body);
+        background: var(--bg);
+        background-image: radial-gradient(circle at 100% 0%, var(--peach-soft2) 0%, transparent 45%);
+        color: var(--ink);
+        line-height: 1.6;
+        padding: 32px 20px;
+    }
+
+    .container { max-width: 1020px; margin: 0 auto; display: grid; grid-template-columns: 300px 1fr; gap: 22px; }
+
+    /* SIDEBAR */
+    aside { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 32px 28px; height: fit-content; position: sticky; top: 20px; box-shadow: 0 1px 0 rgba(44,33,24,0.02); }
+
+    .photo-frame { width: 172px; height: 172px; margin: 0 auto 20px; border-radius: 16px; overflow: hidden; border: 3px solid var(--peach-soft); }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 55% 20%; }
+
+    h1 { font-family: var(--display); font-weight: 700; color: var(--ink); font-size: 1.55rem; text-align: center; margin-bottom: 6px; letter-spacing: -0.01em; }
+
+    .prompt-line {
+        display: block; text-align: center; margin: 0 auto 24px; font-family: var(--mono);
+        font-size: 0.72rem; color: var(--peach-deep); background: var(--peach-soft2);
+        border: 1px solid var(--peach-soft); border-radius: 100px; padding: 5px 12px; width: fit-content;
+    }
+    /*.prompt-line::before { content: "~/spse-halova "; color: var(--muted); }
+    .prompt-line::after { content: " ✓ 2nd-year"; }*/
+
+    .contact-info { border-top: 1px solid var(--border); padding-top: 20px; }
+    .label { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--peach-deep); font-weight: 500; margin-bottom: 3px; }
+    .val { font-size: 0.92rem; margin-bottom: 14px; color: var(--ink); }
+    .val a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--peach-soft); }
+    .val a:hover { border-color: var(--peach); }
+
+    .btn-social { display: block; background: var(--peach-soft2); border: 1px solid var(--border); color: var(--ink); text-align: center; padding: 9px; border-radius: 8px; text-decoration: none; margin-bottom: 8px; font-size: 0.85rem; font-weight: 500; transition: 0.15s; }
+    .btn-social:hover { border-color: var(--peach); color: var(--peach-deep); background: var(--peach-soft); }
+
+    /* MAIN CONTENT */
+    main { display: flex; flex-direction: column; gap: 20px; }
+    .section-card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 30px 32px; }
+    h2 {
+        font-family: var(--display); font-weight: 600; color: var(--ink); font-size: 1.15rem;
+        margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+        display: flex; align-items: center; letter-spacing: -0.01em;
+    }
+    h2::before { content: attr(data-tag); font-family: var(--mono); font-size: 0.68rem; font-weight: 500; color: var(--peach); background: var(--peach-soft2); border: 1px solid var(--peach-soft); border-radius: 5px; padding: 3px 7px; margin-right: 10px; }
+
+    p { font-size: 0.94rem; color: var(--ink); }
+
+    .skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .skill-cat h3 { font-family: var(--mono); font-size: 0.82rem; color: var(--peach-deep); margin-bottom: 10px; font-weight: 500; }
+    ul { list-style: none; }
+    ul li { font-size: 0.9rem; margin-bottom: 8px; padding-left: 16px; position: relative; }
+    ul li::before { content: "▹"; position: absolute; left: 0; color: var(--peach); }
+
+    .achievement-item { margin-bottom: 20px; border-left: 2px solid var(--peach-soft); padding-left: 16px; }
+    .achievement-item:last-child { margin-bottom: 0; }
+    .achievement-item h4 { color: var(--ink); font-size: 1rem; font-weight: 600; }
+    .achievement-item .date { font-family: var(--mono); font-size: 0.72rem; color: var(--peach-deep); font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }
+    .achievement-item p { margin-top: 5px; }
+    .achievement-item p + p { margin-top: 3px; }
+
+    .lang-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill { background: var(--peach-soft2); border: 1px solid var(--peach-soft); color: var(--ink); padding: 5px 13px; border-radius: 100px; font-size: 0.8rem; font-weight: 500; }
+
+    @media (max-width: 800px) { .container { grid-template-columns: 1fr; } aside { position: relative; } }
+@media print { body {padding:0;background:white} aside {position:static} .container {display:block} .section-card, aside {break-inside:avoid} .btn-social {display:none} }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <aside>
+        <div class="photo-frame">
+            <img src="./assets/photos/9.webp" alt="Benjamín Zajko">
+        </div>
+        <h1>Benjamín Zajko</h1>
+        <!-- <span class="prompt-line"></span> -->
+
+        <div class="contact-info">
+            <div class="label">Email</div>
+            <div class="val"><a href="mailto:zajko.benjamin10@gmail.com">zajko.benjamin10@gmail.com</a></div>
+
+            <div class="label">Phone</div>
+            <div class="val">+421 944 007 771</div>
+
+            <div class="label">Location</div>
+            <div class="val">Bratislava, Slovakia</div>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <a href="https://github.com/BenjaminZajko" class="btn-social" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/benjam%C3%ADn-zajko-12572434b/" class="btn-social" target="_blank">LinkedIn (uz tam moc nepostujem)</a>
+            <a href="https://instagram.com/benji10____" class="btn-social" target="_blank">Instagram</a>
+        </div>
+    </aside>
+
+    <main>
+        <section class="section-card">
+            <h2 data-tag="about">Professional Profile</h2>
+            <p>
+                Student at SPŠE Hálova 16, studying Information and Network Technologies —
+                covering hardware, networking, electronics, and software. Programming and AI are where I spend
+                most of my time outside class. Fast learner, comfortable picking up new tools quickly, and
+                looking for opportunities to apply what I know to real technical problems.
+            </p>
+        </section>
+
+        <section class="section-card">
+            <h2 data-tag="skills">Technical Skills</h2>
+            <div class="skill-grid">
+                <div class="skill-cat">
+                    <h3>Development</h3>
+                    <ul>
+                        <li><strong>Python:</strong> data structures, OOP, file processing</li>
+                        <li><strong>TypeScript / JavaScript:</strong> built and shipped a real tool during my internship</li>
+                        <li><strong>C++:</strong> OOP and data structures (school)</li>
+                        <li><strong>Rust:</strong> intermediate knowledge; still learning and improving through practice</li>
+                        <li><strong>C#:</strong> fundamentals</li>
+                        <li><strong>Web:</strong> HTML, CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-cat">
+                    <h3>Systems & Hardware</h3>
+                    <ul>
+                        <li><strong>Linux:</strong> basic system administration (Kali Linux)</li>
+                        <li><strong>Cisco:</strong> network configuration (Packet Tracer)</li>
+                        <li><strong>Hardware:</strong> 3D printing (AutoCAD), Arduino, basic electrical/electronics theory</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="skill-cat" style="margin-top: 18px;">
+                <h3>AI-Assisted Development</h3>
+                <ul>
+                    <li>Daily use of Claude Code, GitHub Copilot, and Cursor for real development work</li>
+                    <li>Self-hosting and experimenting with local models via Ollama, plus tools like OpenClaw and opencode</li>
+                    <li>Comfortable working across a multi-machine setup (desktop, laptop, and a dedicated always-on box for running models)</li>
+                </ul>
+            </div>
+            <div class="skill-cat" style="margin-top: 18px;">
+                <h3>Soft Skills</h3>
+                <ul>
+                    <li>Touch typing</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2 data-tag="exp">Experience</h2><div class="achievement-item"><span class="date">Current · Remote internship</span><h4>FAIZA s.r.o. — Networking &amp; Rust</h4><p>Remote internship one day per week as part of school practical training, in an environment connected with Sonalake and Hivewatch.</p><p>Learning and contributing to practical networking and Rust tasks, with support from František Horváth and Tomáš Jašek.</p></div>
+            <div class="achievement-item">
+                <span class="date">Internship</span>
+                <h4>Kistler Bratislava — Programming</h4>
+                <p>Internship at a software company, working primarily in TypeScript.</p>
+                <p>Built a TypeScript library comparison tool, developed with heavy use of AI-assisted ("vibecoded") workflows.</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2 data-tag="ach">Achievements & Involvement</h2>
+            <div class="achievement-item">
+                <span class="date">Current</span>
+                <h4>Competitions</h4>
+                <p>Kockáč Roka — Finalist, ranked in the TOP 30 out of over 9,000 participants.</p>
+                <p>Participation in other local IT competitions.</p>
+            </div>
+            <div class="achievement-item">
+                <span class="date">Activity</span>
+                <h4>Events & Innovation</h4>
+                <p>Local hackathons (Climathon BA, Open Data Heroes by The Spot, and others) and AI conferences, including events with figures like Igor Rattaj and Jakub Šuster.</p>
+            </div>
+            <div class="achievement-item">
+                <span class="date">Community</span>
+                <h4>Volunteering & Organizational Help</h4>
+                <p>IT support for Model Conference Slovakia (MCS) and involvement with First Lego League (FLL) projects.</p>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2 data-tag="why">Why Me?</h2>
+            <p>
+                <strong>Technological drive & adaptability:</strong> constantly learning, oriented toward modern
+                technologies, and looking to become a genuinely useful member of a development team.
+                <br><br>
+                <strong>Practical AI use:</strong> I use AI tools daily, not just to write code faster but to
+                actually understand how things work — from local models to agentic coding tools. In a tech
+                company, that means finding the fastest functional solution without cutting corners on quality.
+                <br><br>
+                <strong>Hardware/software synergy:</strong> experience with Arduino, 3D printing, and electrical
+                engineering fundamentals gives me a head start on understanding how software and hardware
+                interact — useful for grasping more complex systems later on.
+                <br><br>
+                <strong>Age as an advantage:</strong> I'm young and still early in my experience, but that means
+                flexibility — I can prioritize growth and put real time into the work.
+                <br><br>
+                <strong>Work with passion:</strong> I enjoy this field and give full effort to what I take on.
+            </p>
+        </section>
+
+        <section class="section-card">
+            <h2 data-tag="edu">Education</h2>
+            <div class="achievement-item">
+                <span class="date">2015–2020</span>
+                <h4>Katarína Brúderová Primary School (Vajnory)</h4>
+            </div>
+            <div class="achievement-item">
+                <span class="date">2020–2024</span>
+                <h4>Košická Primary School, Bratislava (part of Novohradská Combined School)</h4>
+            </div>
+            <div class="achievement-item">
+                <span class="date">2024–Present</span>
+                <h4>SPŠE Hálova 16, Bratislava (Vocational Electrotechnical School)</h4>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                <div>
+                    <h2 data-tag="lang">Languages</h2>
+                    <div class="lang-pills">
+                        <span class="pill">English B1/B2</span>
+                        <span class="pill">Czech C2</span>
+                        <span class="pill">German A2</span>
+                    </div>
+                </div>
+                <div>
+                    <h2 data-tag="int">Interests</h2>
+                    <div class="lang-pills">
+                        <span class="pill">Cycling</span>
+                        <span class="pill">Football</span>
+                        <span class="pill">Skiing</span>
+                        <span class="pill">Mountains</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+</body>
+</html>
